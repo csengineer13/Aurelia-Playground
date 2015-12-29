@@ -1,3 +1,29 @@
+<!-- W3C Spec for templates ;) -->
 <template>
-  <h1>${message}</h1>
+	<h1>${message}</h1>
+
+	<!-- Event binding -->
+	<form submit.trigger="submit()">
+
+		<!-- Two way data binding to View-model;
+			Bind is two-way by default for form elements,
+			but one way for other elements -->
+		<div>
+			<label>First Name</label>
+			<input type="text" value.bind="firstName" />
+		</div>
+		<div>
+			<label>Last Name</label>
+			<input type="text" value.bind="lastName" />
+		</div>
+
+		<!-- One way binding to View-model -->
+		<div>
+			<label>Full Name</label>
+			<p>${fullName}</p>
+		</div>
+
+		<button type="submit">Submit</button>
+
+	</form>
 </template>

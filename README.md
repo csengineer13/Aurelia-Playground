@@ -8,6 +8,7 @@ Creating this to play with Aurelia ;)
 - [NodeJS](https://nodejs.org/en/)
 - [NPM (Node Package Manager)](http://blog.npmjs.org/post/85484771375/how-to-install-npm)
 - [JSPM (JavaScript Package Manager)](http://jspm.io/) ([getting started](http://jspm.io/docs/getting-started.html))
+- If using Visual Studio, make sure you have TypeScript installed
 
 
 ## Getting Started
