@@ -1,29 +1,43 @@
-<!-- W3C Spec for templates ;) -->
 <template>
-	<h1>${message}</h1>
+	<!-- Auerlia: pull in custom elements, behaviors, and css (ES6 Import)-->
+	<require from="bootstrap/css/bootstrap.css"></require>
+	<require from="font-awesome/css/font-awesome.css"></require>
 
-	<!-- Event binding -->
-	<form submit.trigger="submit()">
-
-		<!-- Two way data binding to View-model;
-			Bind is two-way by default for form elements,
-			but one way for other elements -->
-		<div>
-			<label>First Name</label>
-			<input type="text" value.bind="firstName" />
-		</div>
-		<div>
-			<label>Last Name</label>
-			<input type="text" value.bind="lastName" />
-		</div>
-
-		<!-- One way binding to View-model -->
-		<div>
-			<label>Full Name</label>
-			<p>${fullName}</p>
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle Navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">
+				<i class="fa fa-home"></i>
+				<span>${router.title}</span>
+			</a>
 		</div>
 
-		<button type="submit">Submit</button>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav" id="bs-example-navbar-collapse-1">
+				<!-- Repeater. Local var of row -->
+				<li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
+          			<a href.bind="row.href">${row.title}</a>
+          		</li>
+			</ul>
 
-	</form>
+			<ul class="nav navbar-nav navbar-right">
+				<!-- IF binding (conditional) -->
+				<li class="loader" if.bind="router.isNavigating">
+					<i class="fa fa-spinner fa-spin fa-2x"></i>
+				</li>
+			</ul>
+		</div>
+
+	</nav>
+
+	<div class="page-host">
+		<!-- Aurelia element. Current view for Router's "State" -->
+		<router-view></router-view>
+	</div>
 </template>

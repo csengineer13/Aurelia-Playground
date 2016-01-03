@@ -1,14 +1,17 @@
 export class App {
-	message: string = 'Welcome to Aurelia!';
 
-	firstName: string = 'John';
-	lastName: string = 'Doe';
-
-	get fullName() {
-		return `${this.firstName} ${this.lastName}`;
-	}
-
-	submit() {
-		alert(`Welcome, ${this.fullName}!`);
+	configureRouter(config, router){
+		config.title = 'Aurelia';
+		config.map([
+			// route: 		match patterns ('welcome' or 'welcome/:id')
+			// name:  		used in code when generating routes
+			// moduleId: 	path to component to render
+			// title:		used to generate document title
+			// nav:			"in navigation model", true or a number (for order)
+			{ route: ['', 'welcome'], 	name: 'welcome', 	moduleId: './welcome', 	nav: true, title: 'Welcome' },
+			{ route: 'users', 			name: 'users', 		moduleId: './users', 	nav: true, title: 'Github Users' }	
+		]);
+	
+		this.router = router;
 	}
 }
